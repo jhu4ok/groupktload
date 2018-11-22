@@ -102,4 +102,56 @@
       </plugin>
     </plugins>
   </build>
+
+  <profiles>
+    <profile>
+      <id>load</id>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>io.gatling</groupId>
+            <artifactId>gatling-maven-plugin</artifactId>
+            <version>2.0.0-RC4</version>
+            <configuration>
+              <dataFolder>src/test/resources/data</dataFolder>
+              <resultsFolder>target/gatling</resultsFolder>
+              <simulationsFolder>src\scala\statesimulation</simulationsFolder>
+            </configuration>
+            <executions>
+              <execution>
+                <id>SearchAllStatesSimulation1</id>
+                <phase>test</phase>
+                <goals>
+                  <goal>execute</goal>
+                </goals>
+                <configuration>
+                  <simulationClass>statesimulation.SearchAllStatesSimulation</simulationClass>
+                </configuration>
+              </execution>
+              <execution>
+                <id>SearchByTextSimulation</id>
+                <phase>test</phase>
+                <goals>
+                  <goal>execute</goal>
+                </goals>
+                <configuration>
+                  <simulationClass>statesimulation.SearchByTextSimulation</simulationClass>
+                </configuration>
+              </execution>
+              <execution>
+                <id>SearchOneCountryStateSimulation</id>
+                <phase>test</phase>
+                <goals>
+                  <goal>execute</goal>
+                </goals>
+                <configuration>
+                  <simulationClass>statesimulation.SearchOneCountryStateSimulation</simulationClass>
+                </configuration>
+              </execution>
+            </executions>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+  </profiles>
 </project>
